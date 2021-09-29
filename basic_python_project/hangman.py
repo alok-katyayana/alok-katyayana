@@ -91,11 +91,13 @@ class Game():
 
 
     def start_guess(self):
+        self.word = self.word.lower()
         self.incomplete_letter = ['-'] * len(self.word)
         self.draw()
         print('\nGo On Guess The letter\n')
         while (self.instance_counter > 0):
             self.guess_letter = input()
+            self.guess_letter = self.guess_letter.lower()
             if len(self.guess_letter) != 1:
                 print("No Cheating, enter a single letter.")
                 continue
