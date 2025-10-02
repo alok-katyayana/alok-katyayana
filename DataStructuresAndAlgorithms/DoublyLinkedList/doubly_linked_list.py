@@ -1,5 +1,12 @@
-
+"""
+   This Module Consists of class for Doubly Linked List
+   and a helper Node class
+"""
 class Node:
+    """ 
+       This Class consists of each node in a Doubly Linked List.
+       A node will have two pointers called next and prev
+    """
     def __init__(self, value):
         self.value = value
         self.next = None
@@ -8,6 +15,12 @@ class Node:
 
 
 class DoublyLinkedList():
+    """
+       This class is an abstraction for a Doubly Linked List. There is a pointer to the head
+       and the rest of the list can be traversed from the head. There is also a Tail pointer for
+       the end of the list.
+    """
+
     def __init__(self, value):
         nn = Node(value)
         self.head = nn
@@ -15,6 +28,9 @@ class DoublyLinkedList():
         self.length = 1
 
     def print_list(self):
+        """
+           Print each value in the list, starting from the head!
+        """
         print(f"The number of elements in the list is: {self.length}")
         temp = self.head
         while temp is not None:
