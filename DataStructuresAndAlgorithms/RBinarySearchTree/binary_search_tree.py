@@ -1,20 +1,36 @@
+"""
+   This Module Consists of class for Binary Search Tree 
+   and a helper Node class
+"""
+
 class Node:
+    """ 
+       This Class consists of each node in a binary search tree.
+       A node will have two children called left and right
+    """
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
 class BinarySearchTree:
+    """
+       This class is an abstraction for a Binary Search Tree. There is a pointer to the root
+       and the rest of the tree can be traversed from the root. By the definition of binary search 
+       tree, all the nodes to the left of the root will have value less than the value at root and
+       all the nodes to the right of the root will have value greater that the value at root (
+       consequently for each subsequent node.)
+    """
     def __init__(self):
         self.root = None
 
     def __r_insert(self, current_node, value):
         if current_node is None:
             return Node(value)
-        
+
         if value < current_node.value:
             current_node.left = self.__r_insert(current_node.left, value)
-        
+
         if value > current_node.value:
             current_node.right = self.__r_insert(current_node.right, value)
 
@@ -22,13 +38,17 @@ class BinarySearchTree:
 
 
     def insert(self, value):
+        """
+           Insert a new node into the tree and place it to it's correct position so that the 
+           property of a binary search tree is maintained.
+        """
         if self.root is None:
             self.root = Node(value)
         self.__r_insert(self.root, value)
 
 
     def __r_contains(self, current_node, value):
-        if current_node == None:
+        if current_node is None:
             return False
         if current_node.value == value:
             return True
@@ -38,6 +58,10 @@ class BinarySearchTree:
             return self.__r_contains(current_node.right, value)
 
     def contains(self, value):
+        """
+           Returns true if the value is present in the Binary Search Tree,
+           else returns False.
+        """
         tmp = self.root
         return self.__r_contains(tmp, value)
 
@@ -75,24 +99,35 @@ class BinarySearchTree:
             self.__r_delete(current_node, current_node.right, value)
 
     def min_value(self, current_node):
+        """
+           Minimum Value in a BST
+        """
         while current_node.left is not None:
             current_node = current_node.left
-        
+
         return current_node.value
 
     def delete_node(self, value):
+        """
+           Delete A Node
+        """
         if not self.contains(value):
             return False
-        
+
 
         if value < self.root.value:
             self.__r_delete(self.root, self.root.left, value)
 
         if value > self.root.value:
             self.__r_delete(self.root, self.root.right, value)
+
+
     # The 'is_balanced' and 'inorder_traversal' methods will 
     # be used to test your code
     def is_balanced(self, node=None):
+        """
+           Helper Method
+        """
         def check_balance(node):
             if node is None:
                 return True, -1
@@ -109,6 +144,9 @@ class BinarySearchTree:
         balanced, _ = check_balance(self.root if node is None else node)
         return balanced
     def inorder_traversal(self, node=None):
+        """
+           Helper Method
+        """
         if node is None:
             node = self.root
         result = []
@@ -120,20 +158,22 @@ class BinarySearchTree:
             self._inorder_helper(node.left, result)
             result.append(node.value)
             self._inorder_helper(node.right, result)
-       
+
 if __name__ == "__main__":
-    
+
     ##########################################################
     ##   Test code below will print output to "User logs"   ##
     ##########################################################
-    
+
     def check(expect, actual, message):
+        """
+           Helper Function.
+        """
         print(message)
         print("EXPECTED:", expect)
         print("RETURNED:", actual)
         print("PASS" if expect == actual else "FAIL", "\n")
-    
-    
+
     # test_delete_node_no_children
     print("\n----- Test: Delete node with no children -----\n")
     bst = BinarySearchTree()
@@ -143,8 +183,7 @@ if __name__ == "__main__":
         bst.insert(v)
     bst.delete_node(3)
     check(None, bst.root.left, "Left child of root after deleting 3:")
-    
-    
+
     # test_delete_node_only_left_child
     print("\n----- Test: Delete node with only left child -----\n")
     bst = BinarySearchTree()
@@ -154,8 +193,7 @@ if __name__ == "__main__":
         bst.insert(v)
     bst.delete_node(3)
     check(1, bst.root.left.value, "Left child of root after deleting 3:")
-    
-    
+
     # test_delete_node_only_right_child
     print("\n----- Test: Delete node with only right child -----\n")
     bst = BinarySearchTree()
@@ -165,8 +203,7 @@ if __name__ == "__main__":
         bst.insert(v)
     bst.delete_node(8)
     check(9, bst.root.right.value, "Right child of root after deleting 8:")
-    
-    
+
     # test_delete_node_two_children
     print("\n----- Test: Delete node with two children -----\n")
     bst = BinarySearchTree()
@@ -176,8 +213,7 @@ if __name__ == "__main__":
         bst.insert(v)
     bst.delete_node(3)
     check(4, bst.root.left.value, "Left child of root after deleting 3:")
-    
-    
+
     # test_delete_root
     print("\n----- Test: Delete root -----\n")
     bst = BinarySearchTree()
@@ -187,8 +223,7 @@ if __name__ == "__main__":
         bst.insert(v)
     bst.delete_node(5)
     check(8, bst.root.value, "Root value after deleting 5:")
-    
-    
+
     # test_delete_non_existent_node
     print("\n----- Test: Attempt to delete a non-existent node -----\n")
     bst = BinarySearchTree()

@@ -1,6 +1,13 @@
+"""
+   Exercises related to Leetcode!
+"""
+
 ## I will use inbuilt hash table, dictionary
 
-def item_in_common(l1, l2):
+def item_in_common(l1: list, l2: list):
+    """
+       return common items in two lists.
+    """
     empty_dict = {}
 
     for elm in l1:
@@ -12,6 +19,9 @@ def item_in_common(l1, l2):
             yield val
 
 def find_duplicates(nums:list):
+    """
+       return duplicate items in the lists.
+    """
     ed = {}
 
     for elm in nums:
@@ -22,16 +32,25 @@ def find_duplicates(nums:list):
             yield key
 
 def first_non_repeating_char(s:str):
+    """
+       return first non repeating character from a string.
+    """
     ed = {}
 
     for c in s:
         ed[c] = ed.get(c,0) + 1
 
+    res_item = None
     for k,v in ed.items():
         if v == 1:
-            return k
+            res_item = k
+            break
+    return res_item
 
 def group_anagrams(lst:list[str]):
+    """
+       Return all the anagrams from a string (words need not be meaningful)
+    """
     ed = {}
     for elm in lst:
         v = 0
@@ -45,7 +64,10 @@ def group_anagrams(lst:list[str]):
 
     return list(ed.values())
 
-def two_sum(nums, target):
+def two_sum(nums: list, target: int):
+    """
+       return two numbers whose sum matches target
+    """
     ed = {}
     lst = []
     for i,elm in enumerate(nums):
@@ -54,11 +76,14 @@ def two_sum(nums, target):
             lst.extend([ ed[target-elm], i])
             return lst
         ed[elm] = i
-    
+
     return lst
 
 def subarray_sum(nums, target):
-    for i, elm in enumerate(nums):
+    """
+       Brute Force Solution: Sub array whose sum is target
+    """
+    for i in range(nums):
         for j in range(i, len(nums)):
             if sum(nums[i:j+1]) == target:
                 return [i, j]
@@ -75,7 +100,6 @@ if __name__ == "__main__":
 
 
     print(list(item_in_common(list1, list2)))
-    
     vals = [1,2,3,4,5,4,5,4,5]
 
     res = find_duplicates(vals)
@@ -87,7 +111,7 @@ if __name__ == "__main__":
     print( first_non_repeating_char('hello') )
 
     print( first_non_repeating_char('aabbcc') )
-    
+
     print("1st set:")
     print( group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]) )
 
@@ -106,19 +130,19 @@ if __name__ == "__main__":
     print ( two_sum([1, 2, 3, 4, 5], 7) )
     print ( two_sum([1, 2, 3, 4, 5], 3) )
     print ( two_sum([], 0) )
-    
-    nums = [1, 2, 3, 4, 5]
-    target = 9
-    print ( subarray_sum(nums, target) )
-    
-    nums = [-1, 2, 3, -4, 5]
-    target = 0
-    print ( subarray_sum(nums, target) )
-    
-    nums = [2, 3, 4, 5, 6]
-    target = 3
-    print ( subarray_sum(nums, target) )
-    
-    nums = []
-    target = 0
-    print ( subarray_sum(nums, target) ) 
+
+    nums1 = [1, 2, 3, 4, 5]
+    TARGET1 = 9
+    print ( subarray_sum(nums1, TARGET1) )
+
+    nums1 = [-1, 2, 3, -4, 5]
+    TARGET1 = 0
+    print ( subarray_sum(nums1, TARGET1) )
+
+    nums1 = [2, 3, 4, 5, 6]
+    TARGET1 = 3
+    print ( subarray_sum(nums1, TARGET1) )
+
+    nums1 = []
+    TARGET1 = 0
+    print ( subarray_sum(nums1, TARGET1) )

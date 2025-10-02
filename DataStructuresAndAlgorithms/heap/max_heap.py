@@ -1,4 +1,11 @@
+"""
+   Module for Max Heap Class
+"""
+
 class MaxHeap:
+    """
+       Abstraction of Max Heap
+    """
     def __init__(self):
         self.heap = []
 
@@ -14,7 +21,7 @@ class MaxHeap:
     def _swap(self, i1, i2):
         self.heap[i1], self.heap[i2] = self.heap[i2], self.heap[i1]
 
-    def _trikkle_up(self, index):
+    def _trickle_up(self, index):
         while self._parent(index) >= 0 and self.heap[self._parent(index)] < self.heap[index]:
             self._swap(index, self._parent(index))
             index = self._parent(index)
@@ -39,6 +46,9 @@ class MaxHeap:
 
 
     def remove(self):
+        """
+           Remove the top most element, Max value in this case.
+        """
         if len(self.heap) == 0:
             return None
 
@@ -55,10 +65,16 @@ class MaxHeap:
 
 
     def insert(self, value):
+        """
+           Insert a value into the heap.
+        """
         self.heap.append(value)
-        self._trikkle_up(len(self.heap)-1)
+        self._trickle_up(len(self.heap)-1)
 
     def print_heap(self):
+        """
+           Print the heap
+        """
         print(self.heap)
 
 if __name__ == "__main__":
@@ -89,16 +105,15 @@ if __name__ == "__main__":
     myheap.insert(60)
     myheap.insert(50)
     myheap.insert(65)
-    
+
     print(myheap.heap)
-    
-    
+
+
     myheap.remove()
-    
+
     print(myheap.heap)
-    
-    
+
+
     myheap.remove()
-    
+
     print(myheap.heap)
-    

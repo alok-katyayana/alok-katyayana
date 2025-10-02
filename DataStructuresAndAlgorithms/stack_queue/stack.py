@@ -1,14 +1,27 @@
+"""
+   This Module Implements Stack Data Structure.
+"""
+
 class Node:
+    """
+       Node in a Stack
+    """
     def __init__(self, value):
         self.value = value
         self.next = None
 
 class Stack:
+    """
+       Abstraction for a Stack Data Structure
+    """
     def __init__(self):
         self.top = None
         self.height = 0
 
     def push(self, value):
+        """
+           Push a value on to the stack
+        """
         new_node = Node(value)
         if self.top is None:
             self.top = new_node
@@ -22,6 +35,9 @@ class Stack:
         return True
 
     def print_stack(self):
+        """
+           Print the Stack
+        """
         print(f"The height of the stack is {self.height}")
         tmp = self.top
         while tmp is not None:
@@ -29,6 +45,9 @@ class Stack:
             tmp = tmp.next
 
     def pop(self):
+        """
+           Pop value from the stack
+        """
         if self.top is None:
             return None
 
@@ -39,26 +58,32 @@ class Stack:
         return tmp.value
 
     def peek(self):
+        """
+           Peek the top most value
+        """
         if self.top is None:
             return None
         else:
             return self.top.value
 
     def is_empty(self):
+        """
+           Return True is stack is empty else returns False
+        """
         return self.height == 0
 
 if __name__ == "__main__":
     stc = Stack()
-    
+
     for i in range(10):
         stc.push(i)
-    
+
     print(f"Peek : {stc.peek()}")
     stc.print_stack()
-    
+
     x = 1
     while x is not None:
         x = stc.pop()
         print(x)
-    
+
     stc.print_stack()

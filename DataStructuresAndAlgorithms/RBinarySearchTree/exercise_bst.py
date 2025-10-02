@@ -1,4 +1,4 @@
-from bst import Node, BinarySearchTree
+from binary_search_tree import Node, BinarySearchTree
 
 class ExerciseBST(BinarySearchTree):
     def __sorted_list_to_bst(self, nums, left, right):

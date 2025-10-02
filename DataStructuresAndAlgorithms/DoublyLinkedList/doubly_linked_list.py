@@ -39,6 +39,9 @@ class DoublyLinkedList():
         print("")
 
     def append(self, value):
+        """
+           Insert a new node into the list at the end.
+        """
         nn = Node(value)
         if self.head is None:
             self.head = nn
@@ -51,8 +54,11 @@ class DoublyLinkedList():
         self.length += 1
 
         return True
-    
+
     def pop(self):
+        """
+           Removes and returns the last node from the list.
+        """
         if self.head is None:
             return None
 
@@ -71,6 +77,9 @@ class DoublyLinkedList():
         return tmp
 
     def prepend(self, value):
+        """
+           Insert a new node into the list at the beginning.
+        """
         nn = Node(value)
         if self.head is None:
             res = self.append(value)
@@ -83,6 +92,9 @@ class DoublyLinkedList():
         return res
 
     def pop_first(self):
+        """
+           Removes and returns the first node from the list.
+        """
         if self.head is None:
             return None
 
@@ -96,9 +108,12 @@ class DoublyLinkedList():
             res.next = None
             self.length -= 1
 
-        return res 
-    
+        return res
+
     def get(self, index):
+        """
+           Returns the value at a valid index, else returns None
+        """
         if index < 0 or index >= self.length:
             return None
 
@@ -109,6 +124,9 @@ class DoublyLinkedList():
         return tmp
 
     def set_value(self, index, value):
+        """
+           Sets the value at a valid index, else returns False
+        """
         nd = self.get(index)
 
         if nd is None:
@@ -118,6 +136,10 @@ class DoublyLinkedList():
         return True
 
     def insert(self, index, value):
+        """
+           Inserts a new node with specified value at a valid index,
+             else returns False
+        """
         if index < 0 or index > self.length:
             return False
 
@@ -140,6 +162,10 @@ class DoublyLinkedList():
         return True
 
     def remove(self, index):
+        """
+           Removes the node at a valid index,
+             else returns None
+        """
         if index < 0 or index >= self.length:
             return None
 
@@ -163,6 +189,9 @@ class DoublyLinkedList():
 
 
     def make_empty(self):
+        """
+           Removes all the nodes from the list
+        """
         self.head = None
         self.tail = None
         self.length = 0
@@ -174,18 +203,18 @@ if __name__ == "__main__":
     edl.print_list()
 
     print("----------Test Append----------")
-    edl.append(100);edl.append(103);edl.append(10)
+    edl.append(100)
+    edl.append(103)
+    edl.append(10)
     edl.print_list()
-    i = 10
 
     print("----------Test pop----------")
+    i = edl.pop()
     while i is not None:
-        try:
-            i = edl.pop()
-            edl.print_list()
-        except:
-            print("List is empty Now")
-            break
+        print(f"Popped Value is {i.value}")
+        edl.print_list()
+        i = edl.pop()
+
 
 
     print("----------Test Prepend----------")
@@ -194,13 +223,11 @@ if __name__ == "__main__":
         edl.print_list()
 
     print("----------Test Pop First----------")
+    i = edl.pop_first()
     while i is not None:
-        try:
-            i = edl.pop_first()
-            edl.print_list()
-        except:
-            print("List is empty Now")
-            break
+        print(f"Popped Value is {i.value}")
+        edl.print_list()
+        i = edl.pop()
 
 
     print("----------Test get----------")
@@ -211,18 +238,13 @@ if __name__ == "__main__":
     edl.print_list()
     for i in range(10):
         print("index: ",i)
-        try:
-            print(edl.get(i).value)
-        except:
-            print(edl.get(i))
-
-
+        print(edl.get(i).value)
 
     print("----------Test Set----------")
     edl.print_list()
     for i in range(-10,10,2):
-        res = edl.set_value(i, i*10)
-        print(res)
+        RES = edl.set_value(i, i*10)
+        print(RES)
 
     edl.print_list()
 
@@ -232,7 +254,7 @@ if __name__ == "__main__":
     for elm in test_index:
         print(edl.insert(elm, id(elm)))
         print(elm)
-    
+
     edl.print_list()
 
     print("----------Test Remove Method----------")
@@ -242,7 +264,6 @@ if __name__ == "__main__":
     test_index = [-10,0,1,2,8,7,9,21,229]
     for elm in test_index:
         print(elm)
-        print(edl.remove(elm)) 
-    
-    edl.print_list()
+        print(edl.remove(elm))
 
+    edl.print_list()
