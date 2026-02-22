@@ -1,0 +1,47 @@
+==================== 2025-11-05 11:49:30.090668 | 019a53d9-bd68-7423-a760-af84d16cb461 ====================
+Installing dbt project and profile setup
+Info Created .vscode/extensions.json with dbt extension recommendation
+Success Project created successfully!
+Info Project name: jaffle_shop
+Info Project directory: jaffle_shop
+Info Setting up your profile...
+Info Creating new profile...
+No dbt_cloud.yml found - proceeding without cloud pre-population
+11:49:58.474006 [error]: dbt1001: Failed to get input for host: IO error: read interrupted
+11:49:58.722222 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' with 1 error [28.6s]
+==================== 2025-11-05 12:10:14.980057 | 019a53ec-bc3f-7673-a36d-87064689907c ====================
+Installing dbt project and profile setup
+Warning Directory 'jaffle_shop' already exists, using 'jaffle_shop_1' instead
+Info Created .vscode/extensions.json with dbt extension recommendation
+Success Project created successfully!
+Info Project name: jaffle_shop_1
+Info Project directory: jaffle_shop_1
+Info Setting up your profile...
+Info Creating new profile...
+No dbt_cloud.yml found - proceeding without cloud pre-population
+Success Profile written to /home/alok/.dbt/profiles.yml
+Validating profile inputs, adapters, and connection
+
+dbt-fusion 2.0.0-preview.57
+   Loading ~/.dbt/profiles.yml
+ Debugging profile: dev
+ Debugging dbt version: 2.0.0-preview.57
+ Debugging platform: linux x86_64 (unix)
+ Debugging adapter type: postgres (remote)
+ Debugging dependencies:
+  git: OK
+ Debugging connection:
+  "port": 5432,
+  "database": "aalok",
+  "schema": "analytics",
+  "host": "127.0.0.1",
+  "user": "alok"
+12:10:56.398385 [debug]: Query executed on node unknown:
+select 1 as id
+ Debugging connection test: OK
+  Debugged All checks passed!
+12:10:56.882546 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' successfully for target 'dev' [41.9s]
